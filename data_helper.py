@@ -4,20 +4,18 @@ from sklearn.preprocessing import MinMaxScaler, StandardScaler, PolynomialFeatur
 
 
 def load_data(dataset_path):
-
     df = pd.read_csv(dataset_path)
-    df= df.fillna(df.mean())
+    df = df.fillna(df.mean())
     data = df.to_numpy()
 
     x = data[:, :-1]
     t = data[:, -1].reshape(-1, 1)
 
-    x_train = x[100,:]
-    x_val = x[,100:]
+    x_train = x[:100, :]
+    x_val = x[100:, :]
 
-
-    t_train = t[100,:]
-    t_val = t[100,:]
+    t_train = t[:100, :]
+    t_val = t[100:, :]
 
     return x, t, x_train, x_val, t_train, t_val
 
